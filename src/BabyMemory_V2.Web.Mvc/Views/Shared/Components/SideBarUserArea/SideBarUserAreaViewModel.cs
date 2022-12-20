@@ -17,9 +17,10 @@ namespace BabyMemory_V2.Web.Views.Shared.Components.SideBarUserArea
                 return userName;
             }
 
-            return LoginInformations.Tenant == null
-                ? ".\\" + userName
-                : LoginInformations.Tenant.TenancyName + "\\" + userName;
+            return LoginInformations.User.Name + " " + LoginInformations.User.Surname;
+            //return LoginInformations.Tenant == null
+            //    ? ".\\" + userName
+            //    : LoginInformations.Tenant.TenancyName + "\\" + userName;
         }
     }
 }
