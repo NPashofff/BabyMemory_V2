@@ -254,3 +254,4 @@ paket-files/
 src/BabyMemory_V2.Web.Mvc/secrets.json
 src/BabyMemory_V2.Web.Host/secrets.json
 src/BabyMemory_V2.Migrator/secrets.json
+/src/BabyMemory_V2.Web.Mvc/App_Data/Logs/Logs.txt
