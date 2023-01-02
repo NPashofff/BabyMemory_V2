@@ -39,14 +39,14 @@ namespace BabyMemory_V2.Authorization.Users
 
         public async Task<User> RegisterAsync(string name, string surname, string emailAddress, string userName, string plainPassword, bool isEmailConfirmed)
         {
-            //CheckForTenant();
+            CheckForTenant();
 
-            //var tenant = await GetActiveTenantAsync();
+            var tenant = await GetActiveTenantAsync();
 
             //todo: как да го направя без наемател?
             var user = new User
             {
-                TenantId = 1,
+                TenantId = tenant.Id,
                 Name = name,
                 Surname = surname,
                 EmailAddress = emailAddress,
@@ -83,7 +83,7 @@ namespace BabyMemory_V2.Authorization.Users
         {
             if (!AbpSession.TenantId.HasValue)
             {
-                return null;
+                return await GetActiveTenantAsync(2);
             }
 
             return await GetActiveTenantAsync(AbpSession.TenantId.Value);

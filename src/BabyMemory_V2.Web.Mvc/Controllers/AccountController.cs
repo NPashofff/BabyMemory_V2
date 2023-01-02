@@ -147,10 +147,10 @@ namespace BabyMemory_V2.Web.Controllers
         private bool IsSelfRegistrationEnabled()
         {
             // Comment out the line below to enable self-registration for host users
-            //if (!AbpSession.TenantId.HasValue)
-            //{
-            //    return false; // No registration enabled for host users!
-            //}
+            if (!AbpSession.TenantId.HasValue)
+            {
+                return false; // No registration enabled for host users!
+            }
 
             return true;
         }
@@ -214,7 +214,7 @@ namespace BabyMemory_V2.Web.Controllers
                 }
 
                 await _unitOfWorkManager.Current.SaveChangesAsync();
-
+                //todo ????
                 Debug.Assert(user.TenantId != null);
 
                 var tenant = await _tenantManager.GetByIdAsync(user.TenantId.Value);

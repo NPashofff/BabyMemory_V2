@@ -59,7 +59,7 @@ namespace BabyMemory_V2.Users
 
             var user = ObjectMapper.Map<User>(input);
 
-            user.TenantId = AbpSession.TenantId;
+            user.TenantId = AbpSession.TenantId ?? 1;
             user.IsEmailConfirmed = true;
 
             await _userManager.InitializeOptionsAsync(AbpSession.TenantId);
@@ -74,6 +74,11 @@ namespace BabyMemory_V2.Users
             CurrentUnitOfWork.SaveChanges();
 
             return MapToEntityDto(user);
+        }
+
+        public override Task<PagedResultDto<UserDto>> GetAllAsync(PagedUserResultRequestDto input)
+        {
+            return base.GetAllAsync(input);
         }
 
         public override async Task<UserDto> UpdateAsync(UserDto input)
