@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using Abp.Authorization.Users;
 using Abp.Extensions;
+using BabyMemory_V2.Model.Childern;
+using BabyMemory_V2.Model.Event;
 
 namespace BabyMemory_V2.Authorization.Users
 {
@@ -30,5 +32,9 @@ namespace BabyMemory_V2.Authorization.Users
 
             return user;
         }
+
+        public ICollection<Children> Childrens { get; set; } = new List<Children>();
+
+        public ICollection<Event> Events { get; set; } = new List<Event>();
     }
 }

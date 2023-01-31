@@ -1573,10 +1573,80 @@ namespace BabyMemoryV2.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EventId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Picture")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Childrens");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Events");
+                });
+
             modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
                 {
                     b.Property<string>("Id")
                         .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("ChildrenId")
                         .HasColumnType("nvarchar(36)");
 
                     b.Property<DateTime>("CreationDate")
@@ -1592,6 +1662,8 @@ namespace BabyMemoryV2.Migrations
                         .HasColumnType("nvarchar(254)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ChildrenId");
 
                     b.ToTable("HealthProcedures");
                 });
@@ -1622,6 +1694,9 @@ namespace BabyMemoryV2.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("nvarchar(36)");
 
+                    b.Property<string>("ChildrenId")
+                        .HasColumnType("nvarchar(36)");
+
                     b.Property<DateTime>("CreationDate")
                         .HasColumnType("datetime2");
 
@@ -1639,6 +1714,8 @@ namespace BabyMemoryV2.Migrations
                         .HasColumnType("nvarchar(2048)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ChildrenId");
 
                     b.ToTable("Memories");
                 });
@@ -1966,6 +2043,38 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Event.Event", null)
+                        .WithMany("Childrens")
+                        .HasForeignKey("EventId");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                        .WithMany("HealthProcedures")
+                        .HasForeignKey("ChildrenId");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Memory.Memory", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                        .WithMany("Memories")
+                        .HasForeignKey("ChildrenId");
+                });
+
             modelBuilder.Entity("BabyMemory_V2.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("BabyMemory_V2.Authorization.Users.User", "CreatorUser")
@@ -2077,6 +2186,18 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("Settings");
 
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.Navigation("HealthProcedures");
+
+                    b.Navigation("Memories");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.Navigation("Childrens");
                 });
 #pragma warning restore 612, 618
         }

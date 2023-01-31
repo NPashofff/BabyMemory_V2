@@ -2,6 +2,8 @@
 using Abp.Zero.EntityFrameworkCore;
 using BabyMemory_V2.Authorization.Roles;
 using BabyMemory_V2.Authorization.Users;
+using BabyMemory_V2.Model.Childern;
+using BabyMemory_V2.Model.Event;
 using BabyMemory_V2.Model.HealthProcedure;
 using BabyMemory_V2.Model.Medicine;
 using BabyMemory_V2.Model.Memory;
@@ -18,6 +20,8 @@ namespace BabyMemory_V2.EntityFrameworkCore
         public DbSet<Memory> Memories { get; set; }
         public DbSet<HealthProcedure> HealthProcedures { get; set; }
         public DbSet<Medicine> Medicines { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Children> Childrens { get; set; }
 
         public BabyMemory_V2DbContext(DbContextOptions<BabyMemory_V2DbContext> options)
             : base(options)

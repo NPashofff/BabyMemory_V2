@@ -4,6 +4,7 @@ using BabyMemory_V2.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BabyMemoryV2.Migrations
 {
     [DbContext(typeof(BabyMemory_V2DbContext))]
-    partial class BabyMemoryV2DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230131210823_AddChildAndEvent")]
+    partial class AddChildAndEvent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1573,6 +1576,153 @@ namespace BabyMemoryV2.Migrations
                     b.ToTable("AbpUsers");
                 });
 
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("EventId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.Property<string>("Picture")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EventId");
+
+                    b.ToTable("Childrens");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<DateTime>("EventDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsPublic")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Events");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("ChildrenId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChildrenId");
+
+                    b.ToTable("HealthProcedures");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Medicine.Medicine", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Medicines");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Memory.Memory", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasMaxLength(36)
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("ChildrenId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(254)
+                        .HasColumnType("nvarchar(254)");
+
+                    b.Property<string>("Picture")
+                        .HasMaxLength(2048)
+                        .HasColumnType("nvarchar(2048)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ChildrenId");
+
+                    b.ToTable("Memories");
+                });
+
             modelBuilder.Entity("BabyMemory_V2.Model.News.News", b =>
                 {
                     b.Property<string>("Id")
@@ -1661,6 +1811,21 @@ namespace BabyMemoryV2.Migrations
                     b.HasIndex("TenancyName");
 
                     b.ToTable("AbpTenants");
+                });
+
+            modelBuilder.Entity("HealthProcedureMedicine", b =>
+                {
+                    b.Property<string>("HealthProceduresId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.Property<string>("MedicinesId")
+                        .HasColumnType("nvarchar(36)");
+
+                    b.HasKey("HealthProceduresId", "MedicinesId");
+
+                    b.HasIndex("MedicinesId");
+
+                    b.ToTable("HealthProcedureMedicine");
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1881,6 +2046,38 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Event.Event", null)
+                        .WithMany("Childrens")
+                        .HasForeignKey("EventId");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Authorization.Users.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                        .WithMany("HealthProcedures")
+                        .HasForeignKey("ChildrenId");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Memory.Memory", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                        .WithMany("Memories")
+                        .HasForeignKey("ChildrenId");
+                });
+
             modelBuilder.Entity("BabyMemory_V2.MultiTenancy.Tenant", b =>
                 {
                     b.HasOne("BabyMemory_V2.Authorization.Users.User", "CreatorUser")
@@ -1906,6 +2103,21 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("Edition");
 
                     b.Navigation("LastModifierUser");
+                });
+
+            modelBuilder.Entity("HealthProcedureMedicine", b =>
+                {
+                    b.HasOne("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", null)
+                        .WithMany()
+                        .HasForeignKey("HealthProceduresId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BabyMemory_V2.Model.Medicine.Medicine", null)
+                        .WithMany()
+                        .HasForeignKey("MedicinesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
@@ -1977,6 +2189,18 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("Settings");
 
                     b.Navigation("Tokens");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+                {
+                    b.Navigation("HealthProcedures");
+
+                    b.Navigation("Memories");
+                });
+
+            modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
+                {
+                    b.Navigation("Childrens");
                 });
 #pragma warning restore 612, 618
         }
