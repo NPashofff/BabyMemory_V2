@@ -42,6 +42,7 @@
         <a href="${article.url}" class="btn btn-primary">Read more</a>
 </div>
 `;
+                console.log(article.title)
                 content.append(articleCard);
             }
         })
