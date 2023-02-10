@@ -19,6 +19,7 @@
 	  <text name="ResetPassword" value="Нулиране на парола" />
 	  <text name="UpdatePassword" value="Актуализиране на паролата" />
 	  <text name="RememberMe" value="Помни ме" />
+	  <text name="BirthDate" value="Дата на раждане" />
 	  <text name="LogIn" value="Влизам" />
 	  <text name="LoginFailed" value="Неуспешно влизане!" />
 	  <text name="NameSurname" value="Име фамилия" />
@@ -118,5 +119,7 @@
 	  <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
 	  <text name="Children">Деца</text>
 	  <text name="UsersActivation">Users activation</text>
+	  <text name="AddChildren">Добави дете</text>
+	  <text name="Picture">Снимка</text>
   </texts>
 </localizationDictionary>

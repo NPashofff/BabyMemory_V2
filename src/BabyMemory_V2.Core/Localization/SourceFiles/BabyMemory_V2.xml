@@ -19,6 +19,7 @@
     <text name="ResetPassword" value="Reset Password" />
     <text name="UpdatePassword" value="Update Password" />
     <text name="RememberMe" value="Remember me" />
+    <text name="BirthDate" value="Birth Date" />
     <text name="LogIn" value="Log in" />
     <text name="LoginFailed" value="Login failed!" />
     <text name="NameSurname" value="Name surname" />
@@ -118,5 +119,8 @@
     <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
     <text name="Children">Children</text>
     <text name="UsersActivation">Users activation</text>
+    <text name="AddChildren">Add Child</text>
+    <text name="Picture">Picture</text>
+
   </texts>
 </localizationDictionary>
