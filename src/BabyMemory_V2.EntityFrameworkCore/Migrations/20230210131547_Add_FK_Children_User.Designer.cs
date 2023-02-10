@@ -4,6 +4,7 @@ using BabyMemory_V2.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BabyMemoryV2.Migrations
 {
     [DbContext(typeof(BabyMemory_V2DbContext))]
-    partial class BabyMemoryV2DbContextModelSnapshot : ModelSnapshot
+    [Migration("20230210131547_Add_FK_Children_User")]
+    partial class AddFKChildrenUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

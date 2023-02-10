@@ -53,6 +53,14 @@ namespace BabyMemory_V2.Web.Startup
                         icon: "fas fa-theater-masks",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Children,
+                        L("Children"),
+                        url: "Children",
+                        icon: "fa fa-child",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Children)
+                    )
                 );
             //.AddItem( // Menu items below is just for demonstration!
             //    new MenuItemDefinition(

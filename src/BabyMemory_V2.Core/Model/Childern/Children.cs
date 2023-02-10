@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using BabyMemory_V2.Authorization.Users;
 
 namespace BabyMemory_V2.Model.Childern
 {
@@ -26,6 +28,11 @@ namespace BabyMemory_V2.Model.Childern
         [MaxLength(GlobalConstants.UrlMaxLen)]
         [AllowNull]
         public string Picture { get; set; }
+
+        public User User { get; set; }
+        
+        [ForeignKey(nameof(User))]
+        public long UserId { get; set; }
 
         public ICollection<Memory.Memory> Memories { get; set; } = new List<Memory.Memory>();
 
