@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
+using Abp.Domain.Entities.Auditing;
 using BabyMemory_V2.Authorization.Users;
 
-namespace BabyMemory_V2.Model.Childern
+namespace BabyMemory_V2.Model.Children
 {
-    public class Children
+    public class Children : FullAuditedEntity<long>
     {
-        [Key]
-        [MaxLength(GlobalConstants.IdGuidMaxLen)]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-
         [Required]
         [MaxLength(GlobalConstants.UserNameMaxLenDb)]
         public string Name { get; set; }
@@ -30,7 +27,7 @@ namespace BabyMemory_V2.Model.Childern
         public string Picture { get; set; }
 
         public User User { get; set; }
-        
+
         [ForeignKey(nameof(User))]
         public long UserId { get; set; }
 

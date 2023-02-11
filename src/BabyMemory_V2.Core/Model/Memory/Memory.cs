@@ -2,15 +2,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using Abp.Domain.Entities.Auditing;
 
 namespace BabyMemory_V2.Model.Memory
 {
-    public class Memory
+    public class Memory : FullAuditedEntity<long>
     {
-        [Key]
-        [MaxLength(GlobalConstants.IdGuidMaxLen)]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-
         public DateTime CreationDate { get; set; }
 
         [Required]

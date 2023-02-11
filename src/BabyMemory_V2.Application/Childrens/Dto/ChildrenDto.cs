@@ -2,16 +2,19 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 
 namespace BabyMemory_V2.Model.Childern
 {
-    public class ChildrenViewModel
+    [AutoMapFrom(typeof(Children.Children))]
+    public class ChildrenDto : EntityDto<long>
     {
-        public string Id { get; set; }
-
         public string Name { get; set; }
 
+        //todo: Направи това птоперти да се пресмята!
         public int Age { get; set; }
+
         public string LastName { get; set; }
 
         public DateTime BirthDate { get; set; }

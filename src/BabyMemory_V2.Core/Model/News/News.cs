@@ -2,15 +2,12 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+using Abp.Domain.Entities.Auditing;
 
 namespace BabyMemory_V2.Model.News
 {
-    public class News
+    public class News : FullAuditedEntity<long>
     {
-        [Key]
-        [MaxLength(GlobalConstants.IdGuidMaxLen)]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-
         [Required]
         [MaxLength(GlobalConstants.NewsNameMaxLen)]
         public string Name { get; set; }

@@ -1,10 +1,13 @@
 ﻿using BabyMemory_V2.Constant;
 using System;
 using System.ComponentModel.DataAnnotations;
+using Abp.Application.Services.Dto;
+using Abp.AutoMapper;
 
 namespace BabyMemory_V2.Model.Childern
 {
-    public class ChildrenAddViewModel
+    [AutoMapTo(typeof(Children.Children))]
+    public class CreateChildrenDto : EntityDto<long>
     {
         [Required]
         [MaxLength(GlobalConstants.UserNameMaxLenDb)]
@@ -16,6 +19,8 @@ namespace BabyMemory_V2.Model.Childern
 
         [Required]
         public DateTime BirthDate { get; set; }
+
+        public long UserId { get; set; }
 
         [MaxLength(GlobalConstants.UrlMaxLen)]
         [Display(Name = GlobalConstants.ImageName)]

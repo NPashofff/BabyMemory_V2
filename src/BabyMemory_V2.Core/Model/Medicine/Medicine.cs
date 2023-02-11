@@ -2,15 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using Abp.Domain.Entities.Auditing;
 
 namespace BabyMemory_V2.Model.Medicine
 {
-    public class Medicine
+    public class Medicine : FullAuditedEntity<long>
     {
-        [Key]
-        [MaxLength(GlobalConstants.IdGuidMaxLen)]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
-
         [Required]
         [MaxLength(GlobalConstants.MedicineNameMaxLen)]
         public string Name { get; set; }

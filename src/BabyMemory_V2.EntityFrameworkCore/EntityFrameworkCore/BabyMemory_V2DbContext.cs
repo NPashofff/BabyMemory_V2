@@ -1,14 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Abp.Zero.EntityFrameworkCore;
+﻿using Abp.Zero.EntityFrameworkCore;
 using BabyMemory_V2.Authorization.Roles;
 using BabyMemory_V2.Authorization.Users;
-using BabyMemory_V2.Model.Childern;
+using BabyMemory_V2.Model.Children;
 using BabyMemory_V2.Model.Event;
 using BabyMemory_V2.Model.HealthProcedure;
 using BabyMemory_V2.Model.Medicine;
 using BabyMemory_V2.Model.Memory;
 using BabyMemory_V2.Model.News;
 using BabyMemory_V2.MultiTenancy;
+using Microsoft.EntityFrameworkCore;
 
 namespace BabyMemory_V2.EntityFrameworkCore
 {

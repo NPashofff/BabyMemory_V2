@@ -1573,17 +1573,40 @@ namespace BabyMemoryV2.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+            modelBuilder.Entity("BabyMemory_V2.Model.Children.Children", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("EventId")
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("EventId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -1613,11 +1636,25 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.Event.Event", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -1627,8 +1664,17 @@ namespace BabyMemoryV2.Migrations
                     b.Property<DateTime>("EventDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsPublic")
                         .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1647,19 +1693,42 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("ChildrenId")
-                        .HasColumnType("nvarchar(36)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("ChildrenId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1675,13 +1744,36 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.Medicine.Medicine", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1695,19 +1787,42 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.Memory.Memory", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("ChildrenId")
-                        .HasColumnType("nvarchar(36)");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
+
+                    b.Property<long?>("ChildrenId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2048)
                         .HasColumnType("nvarchar(2048)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1727,11 +1842,25 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.News.News", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasMaxLength(36)
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("CreatorUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DeleterUserId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("DeletionTime")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -1740,6 +1869,15 @@ namespace BabyMemoryV2.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModificationTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LastModifierUserId")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -1817,11 +1955,11 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("HealthProcedureMedicine", b =>
                 {
-                    b.Property<string>("HealthProceduresId")
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("HealthProceduresId")
+                        .HasColumnType("bigint");
 
-                    b.Property<string>("MedicinesId")
-                        .HasColumnType("nvarchar(36)");
+                    b.Property<long>("MedicinesId")
+                        .HasColumnType("bigint");
 
                     b.HasKey("HealthProceduresId", "MedicinesId");
 
@@ -2048,7 +2186,7 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
-            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+            modelBuilder.Entity("BabyMemory_V2.Model.Children.Children", b =>
                 {
                     b.HasOne("BabyMemory_V2.Model.Event.Event", null)
                         .WithMany("Childrens")
@@ -2076,14 +2214,14 @@ namespace BabyMemoryV2.Migrations
 
             modelBuilder.Entity("BabyMemory_V2.Model.HealthProcedure.HealthProcedure", b =>
                 {
-                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                    b.HasOne("BabyMemory_V2.Model.Children.Children", null)
                         .WithMany("HealthProcedures")
                         .HasForeignKey("ChildrenId");
                 });
 
             modelBuilder.Entity("BabyMemory_V2.Model.Memory.Memory", b =>
                 {
-                    b.HasOne("BabyMemory_V2.Model.Childern.Children", null)
+                    b.HasOne("BabyMemory_V2.Model.Children.Children", null)
                         .WithMany("Memories")
                         .HasForeignKey("ChildrenId");
                 });
@@ -2205,7 +2343,7 @@ namespace BabyMemoryV2.Migrations
                     b.Navigation("Tokens");
                 });
 
-            modelBuilder.Entity("BabyMemory_V2.Model.Childern.Children", b =>
+            modelBuilder.Entity("BabyMemory_V2.Model.Children.Children", b =>
                 {
                     b.Navigation("HealthProcedures");
 
