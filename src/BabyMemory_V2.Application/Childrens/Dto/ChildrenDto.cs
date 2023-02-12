@@ -7,13 +7,13 @@ using Abp.AutoMapper;
 
 namespace BabyMemory_V2.Model.Childern
 {
-    [AutoMapFrom(typeof(Children.Children))]
+    [AutoMap(typeof(Children.Children))]
     public class ChildrenDto : EntityDto<long>
     {
         public string Name { get; set; }
 
         //todo: Направи това птоперти да се пресмята!
-        public int Age { get; set; }
+        public int Age => (DateTime.Now - BirthDate).Days / 365;
 
         public string LastName { get; set; }
 

@@ -8,6 +8,7 @@ using System;
 using Abp.Application.Services.Dto;
 using BabyMemory_V2.Childrens;
 using Abp.Runtime.Session;
+using BabyMemory_V2.Model.Children;
 
 namespace BabyMemory_V2.Web.Controllers
 {
@@ -56,6 +57,27 @@ namespace BabyMemory_V2.Web.Controllers
             var result = await _childrenAppService.GetAsync(new EntityDto<long>() { Id = id });
 
             return View(result);
+        }
+
+        public async Task<IActionResult> Edit(long childrenId)
+        {
+            var result = await _childrenAppService.GetAsync(new EntityDto<long>() { Id = childrenId });
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ChildrenDto model)
+        {
+            if (model.BirthDate > DateTime.Now) ModelState
+                .AddModelError(nameof(model.BirthDate),
+                    GlobalConstants.BirthDateError);
+
+            if (!ModelState.IsValid) return View(model);
+
+            await _childrenAppService.UpdateAsync(model);
+
+            return Redirect("/Children/Profile/" + model.Id);
         }
     }
 }

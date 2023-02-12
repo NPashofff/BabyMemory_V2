@@ -122,6 +122,7 @@
     <text name="AddChildren">Add Child</text>
     <text name="Picture">Picture</text>
     <text name="Profile">Profile</text>
+    <text name="EditChild">Edit Child Profile</text>
 
   </texts>
 </localizationDictionary>
