@@ -70,6 +70,7 @@ namespace BabyMemory_V2.Users
             {
                 CheckErrors(await _userManager.SetRolesAsync(user, input.RoleNames));
             }
+            
 
             CurrentUnitOfWork.SaveChanges();
 
