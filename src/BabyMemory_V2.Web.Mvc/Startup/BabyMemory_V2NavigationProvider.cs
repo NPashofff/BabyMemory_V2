@@ -58,8 +58,9 @@ namespace BabyMemory_V2.Web.Startup
                         PageNames.Children,
                         L("Children"),
                         url: "Children",
-                        icon: "fa fa-child",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Children)
+                        icon: "fa fa-child"
+                        //Todo: refactoring this
+                        //permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Children)
                     )
                 );
             //.AddItem( // Menu items below is just for demonstration!

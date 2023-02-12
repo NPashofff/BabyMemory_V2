@@ -117,7 +117,7 @@
 	  <text name="Clear">Изчистете</text>
 	  <text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
 	  <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
-	  <text name="Children">Деца</text>
+	  <text name="Children">Моите Деца</text>
 	  <text name="UsersActivation">Users activation</text>
 	  <text name="AddChildren">Добави дете</text>
 	  <text name="Picture">Снимка</text>
