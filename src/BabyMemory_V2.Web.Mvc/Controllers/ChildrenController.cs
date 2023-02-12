@@ -5,6 +5,7 @@ using BabyMemory_V2.Model.Childern;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using System;
+using Abp.Application.Services.Dto;
 using BabyMemory_V2.Childrens;
 using Abp.Runtime.Session;
 
@@ -48,6 +49,13 @@ namespace BabyMemory_V2.Web.Controllers
             await _childrenAppService.CreateAsync(model);
 
             return Redirect("/Children");
+        }
+
+        public async Task<IActionResult> Profile(long id)
+        {
+            var result = await _childrenAppService.GetAsync(new EntityDto<long>() { Id = id });
+
+            return View(result);
         }
     }
 }

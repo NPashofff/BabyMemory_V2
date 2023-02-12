@@ -121,5 +121,6 @@
 	  <text name="UsersActivation">Users activation</text>
 	  <text name="AddChildren">Добави дете</text>
 	  <text name="Picture">Снимка</text>
+	  <text name="Profile">Профил</text>
   </texts>
 </localizationDictionary>
