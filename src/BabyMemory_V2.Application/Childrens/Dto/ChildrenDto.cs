@@ -12,7 +12,6 @@ namespace BabyMemory_V2.Model.Childern
     {
         public string Name { get; set; }
 
-        //todo: Направи това птоперти да се пресмята!
         public int Age => (DateTime.Now - BirthDate).Days / 365;
 
         public string LastName { get; set; }
