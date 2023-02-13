@@ -4,23 +4,23 @@
     ViewData["Title"] = L("EditChild");
 }
 
-<h1>@L("EditChild")</h1>
+<h1 class="ml-2">@L("EditChild")</h1>
 
-<div class="h-200  d-flex align-items-center justify-content-center">
+<div class="h-100 ml-5 mr-5 d-flex align-items-center justify-content-center">
     <div class="card card-secondary">
         <div class="card-header">
-            <h3 class="card-title">Budget</h3>
+            <img class="profile-user-img img-fluid img-circle" src="@Model.Picture" alt="@L("Picture")" />
             <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
+                @L("Delete")
+                <a type="button" href="/Children/Delete?childrenId=@Model.Id" class="btn btn-danger" id="deleteChild">
+                    <i class="fa fa-trash"></i>
+                </a>
             </div>
         </div>
         <div class="card-body">
             <form id="editChildForm" asp-route-returnUrl="@Model" method="post">
                 <div class="form-floating">
-                    <input asp-for="@Model!.Id" class="form-control" autocomplete="name" readonly hidden />
-                    <label asp-for="@Model!.Id"></label>
+                    <input asp-for="@Model!.Id" class="form-control"  readonly hidden />
                 </div>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -40,14 +40,11 @@
                 </div>
                 <div class="form-floating">
                     <input asp-for="@Model!.Picture" class="form-control" aria-required="false" />
-                    <label asp-for="@Model!.Picture" style="font-size: small">@L("Picture")</label>
+                    <label asp-for="@Model!.Picture" >@L("Picture")</label>
                     <span asp-validation-for="@Model!.Picture" class="text-danger"></span>
                 </div>
-
-                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@L("Edit")</button>
+                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-secondary">@L("Edit")</button>
             </form>
         </div>
-
     </div>
-
 </div>

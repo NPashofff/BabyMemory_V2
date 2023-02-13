@@ -1,55 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-@model BabyMemory_V2.Model.Childern.ChildrenDto[];
+﻿@model BabyMemory_V2.Model.Childern.ChildrenDto[];
 @{
     ViewData["Title"] = L("Children");
-    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div>
-    <h1>@L("Children")</h1>
-    <a href="/Children/Add" class="btn btn-info text-uppercase">@L("AddChildren")</a>
+<div class="d-flex justify-content-between">
+    <div class="ml-2">
+        <h1>@L("Children")</h1>
+    </div>
+    <div class="m-2">
+        <a href="/Children/Add" class="btn btn-secondary text-uppercase">@L("AddChildren")</a>
+    </div>
 </div>
 <div class="row col-9">
-
     @{
         System.Diagnostics.Debug.Assert(Model != null, nameof(Model) + " != null");
     }
     @foreach (var item in Model)
     {
-        <div class="card col-6 col-lg-3">
-            <img src="@Url.Content(item.Picture)"
-                 class="img-fluid rounded" data-toggle="tooltip" data-placement="bottom" title="Title">
+        <div class="card ml-2 col-6 col-lg-3">
+            <img src="@Url.Content(item.Picture)" class="img-thumbnail rounded mt-1" data-toggle="tooltip" data-placement="bottom" title="Title" alt="@L("Picture")" />
             <div class="card-body">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item text-center">@(item.Name + " " + item.LastName)</li>
                     <li class="list-group-item text-center">@item.BirthDate</li>
                 </ul>
-                <a href="/Children/Profile?id=@item.Id" class="btn btn-primary">Profile</a>
             </div>
+                <a href="/Children/Profile?id=@item.Id" class="btn btn-secondary mb-2">@L("Profile")</a>
         </div>
-
-
-        @* <div class="card-body box-profile">
-    <div class="text-center">
-    <img class="profile-user-img img-fluid img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
-    </div>
-    <h3 class="profile-username text-center">Nina Mcintire</h3>
-    <p class="text-muted text-center">Software Engineer</p>
-    <ul class="list-group list-group-unbordered mb-3">
-    <li class="list-group-item">
-    <b>Followers</b> <a class="float-right">1,322</a>
-    </li>
-    <li class="list-group-item">
-    <b>Following</b> <a class="float-right">543</a>
-    </li>
-    <li class="list-group-item">
-    <b>Friends</b> <a class="float-right">13,287</a>
-    </li>
-    </ul>
-    <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-    </div>*@
     }
 </div>

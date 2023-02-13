@@ -12,13 +12,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-3">
-
-                <div class="card card-primary card-outline">
+                <div class="card card-secondary mt-2">
                     <div class="card-body box-profile">
                         <div class="text-center">
                             <img class="profile-user-img img-fluid img-circle" src="@Url.Content(Model.Picture)" alt="User profile picture">
                         </div>
-                        <h3 class="profile-username text-center"><a href="/Children/Edit?childrenId=@Model.Id">@Model.Name @Model.LastName</a></h3>
+                        <h3 class="profile-username text-center"><a class="btn btn-light" href="/Children/Edit?childrenId=@Model.Id">@Model.Name @Model.LastName</a></h3>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
@@ -29,19 +28,19 @@
                             </li>
 
                         </ul>
-                        <a href="/Memory/Add?childrenId=@Model.Id" class="btn btn-primary btn-block"><b>Add Memory</b></a>
+                        <a href="/Memory/Add?childrenId=@Model.Id" class="btn btn-secondary btn-block"><b>Add Memory</b></a>
                     </div>
                 </div>
 
 
-                <div class="card card-primary">
+                <div class="card card-secondary">
                     <div class="card-header">
                         <h3 class="card-title">Procedures :</h3>
                     </div>
                     <div class="card-body">
                         <strong><i class="fas fa-book mr-1"></i> Health Procedures</strong>
-                        <a href="/HealthProcedure/Add?childId=@Model.Id" class="btn btn-primary btn-block"><b>Add Health Procedure</b></a>
-                        <a href="/Medicine/Add?childId=@Model.Id" class="btn btn-primary btn-block"><b>Add Medicine</b></a>
+                        <a href="/HealthProcedure/Add?childId=@Model.Id" class="btn btn-secondary btn-block"><b>Add Health Procedure</b></a>
+                        <a href="/Medicine/Add?childId=@Model.Id" class="btn btn-secondary btn-block"><b>Add Medicine</b></a>
                     </div>
                     <div class="card-body">
                         @foreach (var item in Model.HealthProcedures.OrderByDescending(x => x.CreationDate))

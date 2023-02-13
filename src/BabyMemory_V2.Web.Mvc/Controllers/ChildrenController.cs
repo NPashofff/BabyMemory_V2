@@ -79,5 +79,12 @@ namespace BabyMemory_V2.Web.Controllers
 
             return Redirect("/Children/Profile/" + model.Id);
         }
+
+        public async Task<IActionResult> Delete(long childrenId)
+        {
+            await _childrenAppService.DeleteAsync(new EntityDto<long>() { Id = childrenId });
+
+            return Redirect("/Children/Index");
+        }
     }
 }

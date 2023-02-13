@@ -77,11 +77,6 @@ namespace BabyMemory_V2.Users
             return MapToEntityDto(user);
         }
 
-        public override Task<PagedResultDto<UserDto>> GetAllAsync(PagedUserResultRequestDto input)
-        {
-            return base.GetAllAsync(input);
-        }
-
         public override async Task<UserDto> UpdateAsync(UserDto input)
         {
             CheckUpdatePermission();

@@ -3,22 +3,15 @@
 @{
     ViewData["Title"] = L("AddChildren");
 }
-<h1>@L("AddChildren")</h1>
+<div class="ml-2">
+    <h1>@L("AddChildren")</h1>
+</div>
 
 
 <div class="h-100  d-flex align-items-center justify-content-center">
     <div class="card card-secondary">
-        <div class="card-header">
-            <h3 class="card-title">Budget</h3>
-            <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
-                    <i class="fas fa-minus"></i>
-                </button>
-            </div>
-        </div>
         <div class="card-body">
             <form id="registerNewChildForm" asp-route-returnUrl="@Model" method="post">
-               
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
                     <input asp-for="@Model!.Name" class="form-control" autocomplete="name" aria-required="true" />
@@ -37,11 +30,10 @@
                 </div>
                 <div class="form-floating">
                     <input asp-for="@Model!.Picture" class="form-control" aria-required="false" />
-                    <label asp-for="@Model!.Picture" style="font-size: small">@L("Picture")</label>
+                    <label asp-for="@Model!.Picture">@L("Picture")</label>
                     <span asp-validation-for="@Model!.Picture" class="text-danger"></span>
                 </div>
-
-                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-lg btn-primary">@L("AddChildren")</button>
+                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-lg btn-secondary">@L("AddChildren")</button>
             </form>
         </div>
 
@@ -51,7 +43,6 @@
 
 <div class="row">
     <div class="col-md-4">
-        
     </div>
 </div>
 

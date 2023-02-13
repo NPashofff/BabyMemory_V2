@@ -42,8 +42,7 @@ namespace BabyMemory_V2.Authorization.Users
             CheckForTenant();
 
             var tenant = await GetActiveTenantAsync();
-
-            //todo: как да го направя без наемател?
+            
             var user = new User
             {
                 TenantId = tenant.Id,
@@ -57,7 +56,7 @@ namespace BabyMemory_V2.Authorization.Users
             };
 
             user.SetNormalizedNames();
-           
+           // todo add User roll as default
             foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
             {
                 user.Roles.Add(new UserRole(1, user.Id, defaultRole.Id));
