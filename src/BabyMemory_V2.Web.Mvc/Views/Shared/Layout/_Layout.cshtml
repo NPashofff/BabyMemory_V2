@@ -11,7 +11,7 @@
     AbpAntiForgeryManager.SetCookie(Context);
 
     var pageTitle = !string.IsNullOrWhiteSpace(ViewBag.Title) ? ViewBag.Title + " / " : "";
-    pageTitle += "BabyMemory_V2";
+    pageTitle += L("BabyMemory");
 }
 <!DOCTYPE html>
 <html lang="@LanguageManager.CurrentLanguage.Name">
