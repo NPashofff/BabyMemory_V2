@@ -123,6 +123,11 @@
     <text name="Picture">Picture</text>
     <text name="Profile">Profile</text>
     <text name="EditChild">Edit Child Profile</text>
+    <text name="Birthday">Birthday</text>>
+    <text name="Age">Age</text>
+    <text name="AddMemory">Add Memory</text>
+    <text name="ChildProfile">Child Profile</text>
+    <text name="BabyMemory">Baby Memory</text>
 
   </texts>
 </localizationDictionary>

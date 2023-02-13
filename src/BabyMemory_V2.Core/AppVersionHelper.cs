@@ -14,6 +14,7 @@ namespace BabyMemory_V2
         /// It's also shown in the web page.
         /// </summary>
         public const string Version = "8.0.0.0";
+        public const string VersionSite = "V 2.0";
 
         /// <summary>
         /// Gets release (last build) date of the application.

@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = L("Children");
 }
+
 <div class="d-flex justify-content-between">
     <div class="ml-2">
         <h1>@L("Children")</h1>
@@ -24,7 +25,7 @@
                     <li class="list-group-item text-center">@item.BirthDate</li>
                 </ul>
             </div>
-                <a href="/Children/Profile?id=@item.Id" class="btn btn-secondary mb-2">@L("Profile")</a>
+            <a href="/Children/Profile?id=@item.Id" class="btn btn-secondary mb-2">@L("Profile")</a>
         </div>
     }
 </div>

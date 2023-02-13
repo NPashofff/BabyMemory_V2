@@ -2,12 +2,15 @@
 @{
     ViewData["Title"] = L("Profile");
 }
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@L("Profile")</title>
-</head>
-
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="m-0 text-dark">@L("ChildProfile")</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <section class="content">
     <div class="container-fluid">
         <div class="row">
@@ -15,20 +18,20 @@
                 <div class="card card-secondary mt-2">
                     <div class="card-body box-profile">
                         <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle" src="@Url.Content(Model.Picture)" alt="User profile picture">
+                            <img class="profile-user-img img-fluid img-circle" src="@Url.Content(Model.Picture)" alt="@L("Picture")">
                         </div>
                         <h3 class="profile-username text-center"><a class="btn btn-light" href="/Children/Edit?childrenId=@Model.Id">@Model.Name @Model.LastName</a></h3>
 
                         <ul class="list-group list-group-unbordered mb-3">
                             <li class="list-group-item">
-                                <text>Age</text> <b class="float-right">@Model.Age</b>
+                                <text>@L("Age")</text> <b class="float-right">@Model.Age</b>
                             </li>
                             <li class="list-group-item">
-                                <text>Birthday</text> <b class="float-right">@Model.BirthDate.ToString("M")</b>
+                                <text>@L("Birthday")</text> <b class="float-right">@Model.BirthDate.ToString("M")</b>
                             </li>
 
                         </ul>
-                        <a href="/Memory/Add?childrenId=@Model.Id" class="btn btn-secondary btn-block"><b>Add Memory</b></a>
+                        <a href="/Memory/Add?childrenId=@Model.Id" class="btn btn-secondary btn-block"><b>@L("AddMemory")</b></a>
                     </div>
                 </div>
 
@@ -79,10 +82,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- END timeline item -->
                                 }
                             </div>
-                            <!-- /.col -->
                         </div>
                     </ul>
 

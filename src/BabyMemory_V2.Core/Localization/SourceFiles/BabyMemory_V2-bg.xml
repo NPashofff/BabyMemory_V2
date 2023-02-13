@@ -122,6 +122,12 @@
 	  <text name="AddChildren">Добави дете</text>
 	  <text name="Picture">Снимка</text>
 	  <text name="Profile">Профил</text>
-	  <text name="EditChild">Редактиране профил на дете</text>
+	  <text name="EditChild">Редактиране профил на дете</text>>
+	  <text name="Birthday">Рожден ден</text>>
+	  <text name="Age">Години</text>
+	  <text name="AddMemory">Добави Спомен</text>
+	  <text name="ChildProfile">Профил на дете</text>
+	  <text name="BabyMemory">Детски Спомени</text>
+
   </texts>
 </localizationDictionary>

@@ -1,11 +1,16 @@
 ﻿@model BabyMemory_V2.Model.Childern.ChildrenDto
-
 @{
     ViewData["Title"] = L("EditChild");
 }
-
-<h1 class="ml-2">@L("EditChild")</h1>
-
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1 class="m-0 text-dark">@L("EditChild")</h1>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="h-100 ml-5 mr-5 d-flex align-items-center justify-content-center">
     <div class="card card-secondary">
         <div class="card-header">
@@ -20,7 +25,7 @@
         <div class="card-body">
             <form id="editChildForm" asp-route-returnUrl="@Model" method="post">
                 <div class="form-floating">
-                    <input asp-for="@Model!.Id" class="form-control"  readonly hidden />
+                    <input asp-for="@Model!.Id" class="form-control" readonly hidden />
                 </div>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
@@ -40,7 +45,7 @@
                 </div>
                 <div class="form-floating">
                     <input asp-for="@Model!.Picture" class="form-control" aria-required="false" />
-                    <label asp-for="@Model!.Picture" >@L("Picture")</label>
+                    <label asp-for="@Model!.Picture">@L("Picture")</label>
                     <span asp-validation-for="@Model!.Picture" class="text-danger"></span>
                 </div>
                 <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-secondary">@L("Edit")</button>
