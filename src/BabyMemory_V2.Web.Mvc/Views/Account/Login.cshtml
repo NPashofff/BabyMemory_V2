@@ -9,7 +9,7 @@
         <script src="~/view-resources/Views/Account/Login.js" asp-append-version="true"></script>
     </environment>
 
-    <environment names="Staging,Production">
+    <environment names="Staging,Production">BabyMemory_V2
         <script src="~/view-resources/Views/Account/Login.min.js" asp-append-version="true"></script>
     </environment>
 }
@@ -47,15 +47,15 @@
         </div>
     </div>
 </form>
-@*<div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
+<div class="social-auth-links text-center mb-3">
+        <p>- @L("Or") -</p>
         <a href="javascript:;" class="btn btn-block btn-primary">
             <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
         </a>
         <a href="javascript:;" class="btn btn-block btn-danger">
             <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
         </a>
-    </div>*@
+    </div>
 <p class="mb-0">
     @if (Model.IsSelfRegistrationAllowed)
     {

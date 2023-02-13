@@ -129,6 +129,7 @@
 	  <text name="ChildProfile">Профил на дете</text>
 	  <text name="BabyMemory">Детски Спомени</text>
 	  <text name="Hi">Здравей: </text>
+	  <text name="Or">ИЛИ</text>
 
   </texts>
 </localizationDictionary>
