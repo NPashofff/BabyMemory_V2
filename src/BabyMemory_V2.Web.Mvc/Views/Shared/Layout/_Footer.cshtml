@@ -1,6 +1,6 @@
 ﻿@using BabyMemory_V2
 <footer class="main-footer">
-    <strong>Copyright &copy; @DateTime.Now.Year <a href="javascript:void(0);">@L("BabyMemory")</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; @DateTime.Now.Year <a asp-controller="About" asp-action="Index" class="text-gray">@L("BabyMemory")</a>.</strong> All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
         <b>@L("Version")</b> @AppVersionHelper.VersionSite 
     </div>

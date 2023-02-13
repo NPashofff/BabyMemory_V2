@@ -46,7 +46,4 @@
     <PackageReference Include="Abp.RedisCache" Version="8.0.0" />
     <PackageReference Include="Abp.Castle.Log4Net" Version="8.0.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="wwwroot\libs\" />
-  </ItemGroup>
 </Project>

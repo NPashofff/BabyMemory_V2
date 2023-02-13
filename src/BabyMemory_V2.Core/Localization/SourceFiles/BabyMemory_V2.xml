@@ -128,6 +128,7 @@
     <text name="AddMemory">Add Memory</text>
     <text name="ChildProfile">Child Profile</text>
     <text name="BabyMemory">Baby Memory</text>
+    <text name="Hi">Hi: </text>
 
   </texts>
 </localizationDictionary>

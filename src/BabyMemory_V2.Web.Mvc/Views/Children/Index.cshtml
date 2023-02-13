@@ -3,29 +3,29 @@
     ViewData["Title"] = L("Children");
 }
 
-<div class="d-flex justify-content-between">
+<div class="d-flex justify-content-between mb-2">
     <div class="ml-2">
         <h1>@L("Children")</h1>
     </div>
     <div class="m-2">
-        <a href="/Children/Add" class="btn btn-secondary text-uppercase">@L("AddChildren")</a>
+        <a href="/Children/Add" class="btn btn-secondary text-uppercase elevation-3">@L("AddChildren")</a>
     </div>
 </div>
-<div class="row col-9">
+<div class="row ml-2 mr-2 d-flex">
     @{
         System.Diagnostics.Debug.Assert(Model != null, nameof(Model) + " != null");
     }
     @foreach (var item in Model)
     {
-        <div class="card ml-2 col-6 col-lg-3">
-            <img src="@Url.Content(item.Picture)" class="img-thumbnail rounded mt-1" data-toggle="tooltip" data-placement="bottom" title="Title" alt="@L("Picture")" />
+        <div class="card mb-4 mr-4 col-lg-3 elevation-2">
+            <img src="@Url.Content(item.Picture)" class="img-fluid rounded mt-2 elevation-3" data-toggle="tooltip" data-placement="bottom" title="Title" alt="@L("Picture")" />
             <div class="card-body">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item text-center">@(item.Name + " " + item.LastName)</li>
-                    <li class="list-group-item text-center">@item.BirthDate</li>
+                    <li class="list-group-item text-center text-bold">@(item.Name + " " + item.LastName)</li>
+                    <li class="list-group-item text-center">@item.BirthDate.Date.ToString("dd.MM.yyyy")</li>
                 </ul>
             </div>
-            <a href="/Children/Profile?id=@item.Id" class="btn btn-secondary mb-2">@L("Profile")</a>
+            <a href="/Children/Profile?id=@item.Id" class="btn btn-secondary mb-2 elevation-3">@L("Profile")</a>
         </div>
     }
 </div>

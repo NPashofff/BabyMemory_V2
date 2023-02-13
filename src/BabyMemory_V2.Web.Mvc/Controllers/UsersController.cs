@@ -45,5 +45,11 @@ namespace BabyMemory_V2.Web.Controllers
         {
             return View();
         }
+
+        public IActionResult Edit()
+        {
+            //todo:
+            throw new System.NotImplementedException();
+        }
     }
 }

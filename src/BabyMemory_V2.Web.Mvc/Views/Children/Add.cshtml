@@ -13,31 +13,31 @@
     </div>
 </div>
 <div class="h-100  d-flex align-items-center justify-content-center">
-    <div class="card card-secondary">
+    <div class="card card-secondary col-lg-4 elevation-2">
         <div class="card-body">
             <form id="registerNewChildForm" asp-route-returnUrl="@Model" method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.Name" class="form-control" autocomplete="name" aria-required="true" />
+                    <input asp-for="@Model!.Name" class="form-control elevation-2" autocomplete="name" aria-required="true" />
                     <label asp-for="@Model!.Name">@L("Name")</label>
                     <span asp-validation-for="@Model!.Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.LastName" class="form-control" autocomplete="lastName" aria-required="true" />
+                    <input asp-for="@Model!.LastName" class="form-control elevation-2" autocomplete="lastName" aria-required="true" />
                     <label asp-for="@Model!.LastName">@L("Surname")</label>
                     <span asp-validation-for="@Model!.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.BirthDate" class="form-control" autocomplete="birthDate" aria-required="true" />
+                    <input asp-for="@Model!.BirthDate" class="form-control elevation-2" autocomplete="birthDate" aria-required="true" />
                     <label asp-for="@Model!.BirthDate">@L("BirthDate")</label>
                     <span asp-validation-for="@Model!.BirthDate" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.Picture" class="form-control" aria-required="false" />
+                    <input asp-for="@Model!.Picture" class="form-control elevation-2" aria-required="false" />
                     <label asp-for="@Model!.Picture">@L("Picture")</label>
                     <span asp-validation-for="@Model!.Picture" class="text-danger"></span>
                 </div>
-                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-lg btn-secondary">@L("AddChildren")</button>
+                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-lg btn-secondary elevation-3">@L("AddChildren")</button>
             </form>
         </div>
     </div>

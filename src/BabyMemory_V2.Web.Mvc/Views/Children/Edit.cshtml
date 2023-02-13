@@ -12,13 +12,13 @@
     </div>
 </div>
 <div class="h-100 ml-5 mr-5 d-flex align-items-center justify-content-center">
-    <div class="card card-secondary">
-        <div class="card-header">
-            <img class="profile-user-img img-fluid img-circle" src="@Model.Picture" alt="@L("Picture")" />
+    <div class="card card-secondary col-lg-4">
+        <div class="card-header elevation-2">
+            <img class="profile-user-img img-fluid img-circle elevation-3" src="@Model.Picture" alt="@L("Picture")" />
             <div class="card-tools">
                 @L("Delete")
-                <a type="button" href="/Children/Delete?childrenId=@Model.Id" class="btn btn-danger" id="deleteChild">
-                    <i class="fa fa-trash"></i>
+                <a type="button" href="/Children/Delete?childrenId=@Model.Id" class="btn btn-danger elevation-2" id="deleteChild">
+                    <i class="fa fa-trash elevation-3"></i>
                 </a>
             </div>
         </div>
@@ -29,26 +29,26 @@
                 </div>
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.Name" class="form-control" autocomplete="name" aria-required="true" />
+                    <input asp-for="@Model!.Name" class="form-control elevation-2" autocomplete="name" aria-required="true" />
                     <label asp-for="@Model!.Name">@L("Name")</label>
                     <span asp-validation-for="@Model!.Name" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.LastName" class="form-control" autocomplete="lastName" aria-required="true" />
+                    <input asp-for="@Model!.LastName" class="form-control elevation-2" autocomplete="lastName" aria-required="true" />
                     <label asp-for="@Model!.LastName">@L("Surname")</label>
                     <span asp-validation-for="@Model!.LastName" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.BirthDate" class="form-control" autocomplete="birthDate" aria-required="true" />
+                    <input asp-for="@Model!.BirthDate" class="form-control elevation-2" autocomplete="birthDate" aria-required="true" />
                     <label asp-for="@Model!.BirthDate">@L("BirthDate")</label>
                     <span asp-validation-for="@Model!.BirthDate" class="text-danger"></span>
                 </div>
                 <div class="form-floating">
-                    <input asp-for="@Model!.Picture" class="form-control" aria-required="false" />
+                    <input asp-for="@Model!.Picture" class="form-control elevation-2" aria-required="false" />
                     <label asp-for="@Model!.Picture">@L("Picture")</label>
                     <span asp-validation-for="@Model!.Picture" class="text-danger"></span>
                 </div>
-                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-secondary">@L("Edit")</button>
+                <button id="addCildrenSubmit" type="submit" class="w-100 btn btn-secondary elevation-3">@L("Edit")</button>
             </form>
         </div>
     </div>

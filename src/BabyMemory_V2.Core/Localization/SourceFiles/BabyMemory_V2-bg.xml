@@ -128,6 +128,7 @@
 	  <text name="AddMemory">Добави Спомен</text>
 	  <text name="ChildProfile">Профил на дете</text>
 	  <text name="BabyMemory">Детски Спомени</text>
+	  <text name="Hi">Здравей: </text>
 
   </texts>
 </localizationDictionary>
