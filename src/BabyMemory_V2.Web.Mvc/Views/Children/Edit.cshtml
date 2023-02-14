@@ -1,6 +1,9 @@
-﻿@model BabyMemory_V2.Model.Childern.ChildrenDto
+﻿@using BabyMemory_V2.Web.Startup
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model BabyMemory_V2.Model.Childern.ChildrenDto
 @{
     ViewData["Title"] = L("EditChild");
+    ViewBag.CurrentPageName = PageNames.Children;
 }
 <div class="content-header">
     <div class="container-fluid">

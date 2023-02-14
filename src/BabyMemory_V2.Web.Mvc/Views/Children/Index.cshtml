@@ -1,6 +1,8 @@
-﻿@model BabyMemory_V2.Model.Childern.ChildrenDto[];
+﻿@using BabyMemory_V2.Web.Startup
+@model BabyMemory_V2.Model.Childern.ChildrenDto[];
 @{
-    ViewData["Title"] = L("Children");
+    ViewData["Title"] = L("Children"); 
+    ViewBag.CurrentPageName = PageNames.Children;
 }
 
 <div class="d-flex justify-content-between mb-2">
