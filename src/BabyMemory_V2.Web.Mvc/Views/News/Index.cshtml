@@ -1,13 +1,24 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using BabyMemory_V2.Web.Startup
 @{
+    ViewBag.Title = L("News");
+    ViewBag.CurrentPageName = PageNames.News;
+}
+@section scripts
+{
+    <environment names="Development">
+        <script src="~/view-resources/Views/News/Index.js" asp-append-version="true"></script>
+    </environment>
+
+    <environment names="Staging,Production">
+        @*Todo: MIN version*@
+        <script src="~/view-resources/Views/News/news-index.min.js" asp-append-version="true"></script>
+    </environment>
 }
 <div class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-12">
-                <h1 class="m-0 text-dark">@L("HomePage")</h1>
+                <h1 class="m-0 text-dark">@L("News")</h1>
             </div>
         </div>
     </div>

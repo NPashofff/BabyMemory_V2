@@ -15,20 +15,43 @@ namespace BabyMemory_V2.Web.Startup
             context.Manager.MainMenu
                 .AddItem(
                     new MenuItemDefinition(
-                        PageNames.About,
-                        L("About"),
-                        url: "About",
-                        icon: "fas fa-info-circle"
-                    )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
                         icon: "fas fa-home",
                         requiresAuthentication: true
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Children,
+                        L("Children"),
+                        url: "Children",
+                        icon: "fa fa-child",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Children)
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Events,
+                        L("Events"),
+                        url: "Events",
+                        icon: "far fa-calendar-check",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Events)
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.News,
+                        L("News"),
+                        url: "News",
+                        icon: "fas fa-newspaper",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_News)
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.About,
+                        L("About"),
+                        url: "About",
+                        icon: "fas fa-info-circle"
+                   )
                 ).AddItem(
                     new MenuItemDefinition(
                         PageNames.Tenants,
@@ -52,14 +75,6 @@ namespace BabyMemory_V2.Web.Startup
                         url: "Roles",
                         icon: "fas fa-theater-masks",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
-                    )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Children,
-                        L("Children"),
-                        url: "Children",
-                        icon: "fa fa-child",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Children)
                     )
                 );
             //.AddItem( // Menu items below is just for demonstration!

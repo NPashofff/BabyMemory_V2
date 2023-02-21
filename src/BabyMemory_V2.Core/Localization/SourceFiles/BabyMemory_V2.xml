@@ -131,11 +131,14 @@
     <text name="Hi">Hi: </text>
     <text name="Or">OR</text>
 	<text name="WelcomeToBabyMemory">Welcome to Baby Memory</text>
+	<text name="News">News</text>
     <text name="AboutP1">Welcome to Baby Memory, a platform designed for parents to create and store memories of their children, keep track of their medical information, and share special moments with friends and family. We understand the importance of capturing life's most precious moments and believe that every child's memories and milestones should be celebrated. That's why we created a one-stop-shop for all your child's needs.</text>
     <text name="AboutP2">Our platform allows you to create a digital memory book of your child's life, starting from their first moments to their first steps and beyond. You can store photos, videos, and write special notes about each memory, making sure that nothing is forgotten. Our easy to use interface makes it effortless to add new memories, and you can access them from anywhere, at any time.</text>
     <text name="AboutP3">Keeping track of your child's medical information can be challenging, but with Baby Memory, you can store all of your child's medical records in one secure place. You can keep track of doctor visits, vaccinations, and medications, making sure that all important information is in one place. This is especially helpful for parents who are looking for quick access to their child's medical history when it's needed the most.</text>
     <text name="AboutP4">We also provide a platform for sharing special moments with friends and family. You can create events like birthday parties, anniversaries, and other milestones, and invite your loved ones to share in the celebration. Our social message feature makes it easy to keep everyone updated and connected, no matter where they are in the world.</text>
     <text name="AboutP5">We believe that every child's life is unique, and we are committed to helping you capture and preserve those special moments. Baby Memory is here to help you celebrate your child's memories, keep track of their medical care, and share their special moments with those who matter most. Try us out today, and see how we can help you create memories that will last a lifetime.</text>
+    <text name="Event">Event</text>
+    <text name="Events">Events</text>
 
   </texts>
 </localizationDictionary>

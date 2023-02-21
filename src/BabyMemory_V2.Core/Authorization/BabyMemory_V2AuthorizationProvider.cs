@@ -12,6 +12,8 @@ namespace BabyMemory_V2.Authorization
             context.CreatePermission(PermissionNames.Pages_Users_Activation, L("UsersActivation"));
             context.CreatePermission(PermissionNames.Pages_Roles, L("Roles"));
             context.CreatePermission(PermissionNames.Pages_Children, L("Children"));
+            context.CreatePermission(PermissionNames.Pages_News, L("News"));
+            context.CreatePermission(PermissionNames.Pages_Events, L("Events"));
             context.CreatePermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }
 

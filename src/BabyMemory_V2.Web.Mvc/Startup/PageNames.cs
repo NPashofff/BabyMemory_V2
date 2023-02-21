@@ -8,5 +8,7 @@
         public const string Users = "Users";
         public const string Roles = "Roles"; 
         public const string Children = "Childern"; 
+        public const string News = "News"; 
+        public const string Events = "Events"; 
     }
 }
