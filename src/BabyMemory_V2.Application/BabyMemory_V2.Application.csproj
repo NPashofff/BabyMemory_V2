@@ -14,7 +14,4 @@
   <ItemGroup>
     <ProjectReference Include="..\BabyMemory_V2.Core\BabyMemory_V2.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Events\" />
-  </ItemGroup>
 </Project>
