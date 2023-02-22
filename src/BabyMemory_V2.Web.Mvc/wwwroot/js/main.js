@@ -1,4 +1,6 @@
 ﻿(function ($) {
+    const l = abp.localization.getSource('BabyMemory_V2');
+
     //Notification handler
     abp.event.on('abp.notifications.received', function (userNotification) {
         abp.notifications.showUiNotifyForUserNotification(userNotification);
@@ -59,6 +61,18 @@
             }
         }
     });
+
+    $.fn.translatedDataTable = function (options) {
+        options.language = {};
+        options.language.paginate = {};
+        options.language.lengthMenu = `${l("Show")} _MENU_ ${l("entries")}`;
+        options.language.info = `${l("Showing")} _START_-_END_ ${l("of")} _TOTAL_ ${l("entries")}`;
+        options.language.infoEmpty = `${l("NoRecords")}`;
+        options.language.emptyTable = `${l("NoDataAvailableInTable")}`;
+        options.language.paginate.previous = `${l("PaginPrevious")}`;
+        options.language.paginate.next = `${l("PaginNext")}`;
+        return $(this).dataTable(options).api();
+    }
 
     function convertToCamelCasedObject(obj) {
         var newObj, origKey, newKey, value;

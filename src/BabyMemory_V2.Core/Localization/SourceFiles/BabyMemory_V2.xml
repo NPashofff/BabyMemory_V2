@@ -139,6 +139,14 @@
     <text name="AboutP5">We believe that every child's life is unique, and we are committed to helping you capture and preserve those special moments. Baby Memory is here to help you celebrate your child's memories, keep track of their medical care, and share their special moments with those who matter most. Try us out today, and see how we can help you create memories that will last a lifetime.</text>
     <text name="Event">Event</text>
     <text name="Events">Events</text>
+    <text name="Show">Show</text>
+    <text name="Showing">Showing</text>
+    <text name="entries">entries</text>
+    <text name="NoRecords" value="No Records" />
+    <text name="NoDataAvailableInTable" value="No Data Available" />
+    <text name="PaginPrevious" value="Previous" />
+    <text name="PaginNext" value="Next" />
+    <text name="EventDate" value="Event Date" />
 
   </texts>
 </localizationDictionary>
