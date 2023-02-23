@@ -1,12 +1,12 @@
 ﻿(function ($) {
-    var _eventService = abp.services.app.event,
+    const _eventService = abp.services.app.event,
         l = abp.localization.getSource('BabyMemory_V2'),
         _$modal = $('#EventModal'),
         _$form = _$modal.find('form'),
         _$table = $('#EventTable'),
-    _$createButon = $('#CreateButton');
+        _$createButon = $('#CreateButton');
 
-    var _$eventTable = _$table.translatedDataTable({
+    const _$eventTable = _$table.translatedDataTable({
         paging: true,
         serverSide: true,
         ajax: function (data, callback, settings) {
@@ -14,7 +14,7 @@
             filter.maxResultCount = data.length;
             filter.skipCount = data.start;
             abp.ui.setBusy(_$table);
-           
+
             _eventService.getAll(filter).done(function (result) {
                 callback({
                     recordsTotal: result.totalCount,
@@ -47,7 +47,7 @@
                 targets: 1,
                 data: 'eventDate',
                 sortable: false
-            },           
+            },
             {
                 targets: 2,
                 data: 'name',
@@ -83,9 +83,9 @@
             eventId = 0;
             _$form.find("#Id").val(eventId);
         }
-        var event = _$form.serializeFormToObject();
+        const event = _$form.serializeFormToObject();
 
-        let usedFunction = eventId == 0 ? _eventService.create(event) : _eventService.update(event);
+        const usedFunction = eventId == 0 ? _eventService.create(event) : _eventService.update(event);
 
         abp.ui.setBusy(_$modal);
         usedFunction.done(function () {
@@ -98,11 +98,11 @@
     });
 
     $(document).on('click', '.edit-event', function (e) {
-        var fryerId = $(this).attr("data-event-id");
+        const eventId = $(this).attr("data-event-id");
         e.preventDefault();
         abp.ui.setBusy(_$form);
 
-        _eventService.get({ id: fryerId }).done(function (dto) {
+        _eventService.get({ id: eventId }).done(function (dto) {
             _$form.populateForm(dto);
         }).always(function () {
             abp.ui.clearBusy(_$form);
@@ -110,16 +110,16 @@
     });
 
     $(document).on('click', '.delete-healthStatusRecord', function () {
-        var healthStatusRecordId = $(this).attr("data-healthStatusRecord-id");
+        const healthStatusRecordId = $(this).attr("data-healthStatusRecord-id");
 
         deleteHealthStatusRecord(healthStatusRecordId);
     });
-    
+
     $(_$modal).on('hidden.bs.modal', function () {
         //$form.find('#clear').click();
         _$form.clearForm();
     });
-    
+
     $('.btn-search').on('click', (e) => {
         _$eventTable.ajax.reload();
     });
