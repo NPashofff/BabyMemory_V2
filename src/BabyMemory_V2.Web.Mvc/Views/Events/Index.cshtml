@@ -8,29 +8,26 @@
 
 @section scripts
     {
-        <environment names="Development">
-            <script src="~/view-resources/Views/Events/Index.js" asp-append-version="true"></script>
-        </environment>
+    <environment names="Development">
+        <script src="~/view-resources/Views/Events/Index.js" asp-append-version="true"></script>
+    </environment>
 
-        <environment names="Staging,Production">
-            <script src="~/view-resources/Views/Events/Index.min.js" asp-append-version="true"></script>
-        </environment>
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/Events/Index.min.js" asp-append-version="true"></script>
+    </environment>
 }
 <section class="content-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-8">
-                @*<vc:diary-title default-title="@L("Fryers")"
-                                record-type="@DiaryOrNomenclatureRecordType.NomenclatureFryers"
-                                permission-allowed-to-manage-title="@PermissionNames.PagesFryersEdit"></vc:diary-title>*@
             </div>
             <div class="col-4">
-               
-                        <a href="javascript:;" data-toggle="modal" data-target="#EventModal" class="btn bg-blue float-right clear-input-type-number">
-                            <i class="fa fa-plus-square"></i>
-                        @L("Create")
-                        </a>
-                
+
+                <a href="javascript:;" data-toggle="modal" data-target="#EventModal" class="btn bg-blue float-right clear-input-type-number">
+                    <i class="fa fa-plus-square"></i>
+                    @L("Create")
+                </a>
+
             </div>
         </div>
     </div>
@@ -44,23 +41,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <!--Use for bulk actions-->
-                               @* @if (IsGranted(PermissionNames.PagesFryerRecordsView))
-                                {
-                                        <vc:redirect-to-page-button 
-                                        url="@Url.Action("Index", "FryerRecords")"
-                                        redirect-button-text="BackToRecords"
-                                        icon-class-left-side="fal fa-backward">
-                                        </vc:redirect-to-page-button>
-                                }*@
+
                             </div>
                             <div class="col-md-6">
-                                @*@await Html.PartialAsync("~/Views/Shared/Tables/Index.AdvancedSearch.cshtml")*@
-                                @*@Html.Hidden($"Hidden{nameof(FryerDto.CompanyFacilityId)}", (int?)ViewData[nameof(FryerDto.CompanyFacilityId)])*@
                             </div>
                             <div class="col-md-6">
-                                @*<vc:copy-nomenclature-button nomeclature-name="@L("Fryers")"
-                                                             record-type="@RecordType.Fryers">
-                                </vc:copy-nomenclature-button>*@
                             </div>
                         </div>
                     </div>
@@ -70,16 +55,14 @@
                                 <thead>
                                     <tr>
                                         <th></th>
-                                        <th>@L("EventDate")</th>
-                                        <th>@L("Name")</th>
+                                        <th class="w-25">@L("EventDate")</th>
+                                        <th class="w-50">@L("Name")</th>
                                         <th>@L("Actions")</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
                             </table>
-                            @* <vc:note record-type="@DiaryOrNomenclatureRecordType.NomenclatureFryers"
-                                     permission-allowed-to-manage-note="@PermissionNames.Pages_Events">
-                            </vc:note>*@
+
                         </div>
                     </div>
                 </div>
@@ -87,3 +70,4 @@
         </div>
     </div>
 </section>
+@await Html.PartialAsync("~/Views/Events/_EventModal.cshtml")

@@ -1,9 +1,10 @@
 ﻿(function ($) {
-    const _eventService = abp.services.app.event,
+    var _eventService = abp.services.app.event,
         l = abp.localization.getSource('BabyMemory_V2'),
         _$modal = $('#EventModal'),
         _$form = _$modal.find('form'),
-        _$table = $('#EventTable');
+        _$table = $('#EventTable'),
+    _$createButon = $('#CreateButton');
 
     var _$eventTable = _$table.translatedDataTable({
         paging: true,
@@ -63,16 +64,60 @@
                     //    return null;
                     //}
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit" data-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
+                        `   <button type="button" class="btn btn-sm bg-secondary edit-event" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
                         `       <i class="fas fa-pencil-alt"></i>`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger deleter" data--id="${row.id}" data--name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm bg-danger deleter" data-event-id="${row.id}" data--name="${row.name}">`,
                         `       <i class="fas fa-trash"></i>`,
                         '   </button>'
                     ].join('');
                 }
             }
         ]
+    });
+
+    _$form.find('.save-button').on('click', (e) => {
+        e.preventDefault();
+        let eventId = _$form.find("#Id").val();
+        if (eventId == "") {
+            eventId = 0;
+            _$form.find("#Id").val(eventId);
+        }
+        var event = _$form.serializeFormToObject();
+
+        let usedFunction = eventId == 0 ? _eventService.create(event) : _eventService.update(event);
+
+        abp.ui.setBusy(_$modal);
+        usedFunction.done(function () {
+            _$modal.modal('hide');
+            abp.notify.info(l('SavedSuccessfully'));
+            //_$eventTable.reload(eventId == 0);
+        }).always(function () {
+            abp.ui.clearBusy(_$modal);
+        });
+    });
+
+    $(document).on('click', '.edit-event', function (e) {
+        var fryerId = $(this).attr("data-event-id");
+        e.preventDefault();
+        abp.ui.setBusy(_$form);
+
+        _eventService.get({ id: fryerId }).done(function (dto) {
+            _$form.populateForm(dto);
+        }).always(function () {
+            abp.ui.clearBusy(_$form);
+        });
+    });
+
+    $(document).on('click', '.delete-healthStatusRecord', function () {
+        var healthStatusRecordId = $(this).attr("data-healthStatusRecord-id");
+
+        deleteHealthStatusRecord(healthStatusRecordId);
+    });
+    
+    $(_$modal).on('hidden.bs.modal', function () {
+        //$form.find('#clear').click();
+        _$form.clearForm();
     });
     
     $('.btn-search').on('click', (e) => {

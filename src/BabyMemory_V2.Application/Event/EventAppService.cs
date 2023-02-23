@@ -1,6 +1,7 @@
-﻿using Abp.Application.Services;
+﻿using System.Threading.Tasks;
+using Abp.Application.Services;
 using Abp.Domain.Repositories;
-using BabyMemory_V2.Events.Dto;
+using BabyMemory_V2.Event.Dto;
 using BabyMemory_V2.Users.Dto;
 
 namespace BabyMemory_V2.Event
@@ -10,6 +11,17 @@ namespace BabyMemory_V2.Event
         public EventAppService(IRepository<Model.Event.Event, long> repository) 
             : base(repository)
         {
+        }
+
+        public override Task<EventDto> UpdateAsync(EventDto input)
+        {
+            return base.UpdateAsync(input);
+        }
+
+        public override Task<EventDto> CreateAsync(CreateEventDto input)
+        {
+            input.UserId = AbpSession.UserId.Value;
+            return base.CreateAsync(input);
         }
     }
 }

@@ -144,4 +144,92 @@
         });
         $this[0].reset();
     };
+
+    /**
+    * Populate HTML Form from Flat (not nested) Object 
+    * @param {any} model
+    */
+    $.fn.populateForm = function (model) {
+        const $form = $(this);
+
+        for (let dtoProperty in model) {
+            if (!Object.prototype.hasOwnProperty.call(model, dtoProperty)) {
+                console.log(`Can't find property [${dtoProperty}] in model of type ${typeof (model)}`);
+                continue;
+            }
+
+            const propName = dtoProperty.charAt(0).toUpperCase() + dtoProperty.slice(1);
+            const formElement = $form.find(`#${propName}`);
+            let formElementValue = model[dtoProperty];
+
+            if (formElement.hasClass("selectpicker")) {
+                if (typeof formElementValue == "number") {
+                    formElementValue = formElementValue.toString();
+                }
+
+                // https://github.com/snapappointments/bootstrap-select/issues/1167#issuecomment-238502928
+                setTimeout(function () {
+                    formElement.selectpicker('val', formElementValue);
+                    if (formElementValue) {
+                        formElement.trigger("change");
+                    }
+                }, 0);
+
+            } else {
+                if (formElement.is(":checkbox")) {
+                    formElement.prop("checked", formElementValue == true || formElementValue == "true");
+                } else if (formElement.isDatePicker()) {
+                    formElement.attr("type", "text");
+                    formElement.addClassIfNotExists("datepicker");
+                    if (formElementValue)
+                        formElement.val(moment(formElementValue).format("DD/MM/YYYY"));
+                } else if (formElement.isDateTimePicker()) {
+                    formElement.attr("type", "text");
+                    formElement.addClassIfNotExists("datetimepicker");
+                    if (formElementValue)
+                        formElement.val(moment(formElementValue).format("DD/MM/YYYY HH:mm"));
+                } else if (formElement.isTimePicker()) {
+                    formElement.attr("type", "text");
+                    formElement.addClassIfNotExists("timepicker");
+                    if (formElementValue)
+                        formElement.val(moment(formElementValue).format("HH:mm"));
+                } else {
+                    formElement.val(formElementValue);
+                }
+            }
+        }
+    }
+
+    $.fn.isDatePicker = function () {
+        const t = $(this);
+        const hasClass = t.hasClass("datepicker");
+        const hasType = t.attr("type") == "date";
+
+        return hasClass || hasType;
+    }
+
+    $.fn.isTimePicker = function () {
+        const t = $(this);
+        const hasClass = t.hasClass("timepicker");
+        const hasType = t.attr("type") == "time";
+
+        return hasClass || hasType;
+    }
+
+    $.fn.isDateTimePicker = function () {
+        const t = $(this);
+        const hasClass = t.hasClass("datetimepicker");
+        const hasType1 = t.attr("type") == "datetime";
+        const hasType2 = t.attr("type") == "datetime-local";
+
+        return hasClass || hasType1 || hasType2;
+    }
+
+    $.fn.addClassIfNotExists = function (className) {
+        const t = $(this);
+        if (!t.hasClass(className)) {
+            t.addClass(className);
+        }
+        return t;
+    }
 })(jQuery);
