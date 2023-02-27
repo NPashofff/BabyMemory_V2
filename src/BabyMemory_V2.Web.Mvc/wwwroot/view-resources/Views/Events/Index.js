@@ -63,14 +63,20 @@
                     //if (!abp.auth.isGranted("Edit")) {
                     //    return null;
                     //}
-                    return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-event" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
+                    const result = abp.session.userId == row.userId
+                        ? [
+                            `   <button type="button" class="btn btn-sm bg-secondary edit-event" title="${l("Edit")}" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
                         `       <i class="fas fa-pencil-alt"></i>`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger deleter" data-event-id="${row.id}" data--name="${row.name}">`,
+                            `   <button type="button" class="btn btn-sm bg-danger deleter" title="${l("Delete")}" data-event-id="${row.id}" data--name="${row.name}">`,
                         `       <i class="fas fa-trash"></i>`,
                         '   </button>'
-                    ].join('');
+                        ]
+                        : [`   <button type="button" class="btn btn-sm bg-secondary join-event" title="${l("JoinEvent")}" data-event-id="${row.id}" data--name="${row.name}">`,
+                            `<i class="fa fa-plus-circle"></i>`,
+                            '   </button>'];
+
+                    return result.join('');
                 }
             }
         ]
@@ -91,7 +97,7 @@
         usedFunction.done(function () {
             _$modal.modal('hide');
             abp.notify.info(l('SavedSuccessfully'));
-            //_$eventTable.reload(eventId == 0);
+            _$eventTable.reload(eventId == 0);
         }).always(function () {
             abp.ui.clearBusy(_$modal);
         });

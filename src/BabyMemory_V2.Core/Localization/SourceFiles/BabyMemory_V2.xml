@@ -147,6 +147,8 @@
     <text name="PaginPrevious" value="Previous" />
     <text name="PaginNext" value="Next" />
     <text name="EventDate" value="Event Date" />
+    <text name="JoinEvent" value="Join Event"/>
+    <text name="ReadMore" value="Read More"/>
 
   </texts>
 </localizationDictionary>
