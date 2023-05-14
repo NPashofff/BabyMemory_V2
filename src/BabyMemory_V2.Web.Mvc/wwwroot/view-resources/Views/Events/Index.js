@@ -115,10 +115,11 @@
         });
     });
 
-    $(document).on('click', '.delete-healthStatusRecord', function () {
-        const healthStatusRecordId = $(this).attr("data-healthStatusRecord-id");
-
-        deleteHealthStatusRecord(healthStatusRecordId);
+    $(document).on('click', '.deleter', function () {
+        const item = $(this).attr("data-event-id");
+        console.log(`delete ${item}`);
+        //deleteItem(item); todo: implement it
+        _$eventTable.reload();
     });
 
     $(_$modal).on('hidden.bs.modal', function () {
