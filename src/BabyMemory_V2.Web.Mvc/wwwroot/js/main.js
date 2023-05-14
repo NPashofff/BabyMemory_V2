@@ -1,6 +1,19 @@
 ﻿(function ($) {
     const l = abp.localization.getSource('BabyMemory_V2');
 
+    /**
+     * Reload DataTable and keep pagination
+     * @param {any} resetPaging
+     */
+    $.fn.dataTable.Api.prototype.reload = function (resetPaging = false, callback = null) {
+        const $keywordSelector = $(".txt-search[name=Keyword]");
+
+        const hasSearchKeyword = $keywordSelector && $keywordSelector.length && $keywordSelector.val().length;
+
+        return this.ajax.reload(callback, resetPaging || hasSearchKeyword);
+    }
+
+
     //Notification handler
     abp.event.on('abp.notifications.received', function (userNotification) {
         abp.notifications.showUiNotifyForUserNotification(userNotification);

@@ -4,13 +4,13 @@
     const content = $('#news-wraper');
     //TODO: must hide key
     const apiKey = '262304592d2741dbabf80cd6efe6dbe1';
-    const apiUrl = 'https://newsapi.org/v2/top-headlines';
+    const apiUrl = 'https://newsapi.org/v2/everything';
 
     function getNews() {
         return new Promise((resolve, reject) => {
             $.ajax({
-                //todo: make sources variable
-                url: `${apiUrl}?sources=bbc-news&apiKey=${apiKey}`,
+                //todo: make sources variable and pages
+                url: `${apiUrl}?sources=bbc-news&pageSize=6&page=1&apiKey=${apiKey}`,
                 success: (news) => {
                     resolve(news);
                 },
