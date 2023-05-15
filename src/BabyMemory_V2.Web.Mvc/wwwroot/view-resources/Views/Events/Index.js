@@ -1,4 +1,6 @@
-﻿(function ($) {
+﻿
+
+(function ($) {
     const _eventService = abp.services.app.event,
         l = abp.localization.getSource('BabyMemory_V2'),
         _$modal = $('#EventModal'),
@@ -45,8 +47,11 @@
             },
             {
                 targets: 1,
-                data: 'eventDate',
-                sortable: false
+                data: null,
+                sortable: false,
+                render: (data, type, row, meta) => {
+                    return window.moment(row.eventDate).format('DD/MM/YYYY HH:mm');
+                }
             },
             {
                 targets: 2,
@@ -65,16 +70,22 @@
                     //}
                     const result = abp.session.userId == row.userId
                         ? [
-                            `   <button type="button" class="btn btn-sm bg-secondary edit-event" title="${l("Edit")}" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
+                            `   <button type="button" class="btn btn-sm bg-secondary ml-1 edit-event" title="${l("Edit")}" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
                         `       <i class="fas fa-pencil-alt"></i>`,
                         '   </button>',
-                            `   <button type="button" class="btn btn-sm bg-danger deleter" title="${l("Delete")}" data-event-id="${row.id}" data--name="${row.name}">`,
+                            `   <button type="button" class="btn btn-sm bg-danger ml-1 deleter" title="${l("Delete")}" data-event-id="${row.id}" data-name="${row.name}">`,
                         `       <i class="fas fa-trash"></i>`,
                         '   </button>'
                         ]
-                        : [`   <button type="button" class="btn btn-sm bg-secondary join-event" title="${l("JoinEvent")}" data-event-id="${row.id}" data--name="${row.name}">`,
+                        : [`   <button type="button" class="btn btn-sm bg-secondary ml-1 join-event" title="${l("JoinEvent")}" data-event-id="${row.id}" data-name="${row.name}">`,
                             `<i class="fa fa-plus-circle"></i>`,
                             '   </button>'];
+
+                    result.unshift(
+                        `   <button type="button" class="btn btn-sm bg-secondary event-details ml-1" title="${l("Details")
+                        }" data-event-id="${row.id}" data-name="${row.name}">`,
+                        `<i class="fas fa-bars"></i>`,
+                        '   </button>');
 
                     return result.join('');
                 }
@@ -116,11 +127,29 @@
     });
 
     $(document).on('click', '.deleter', function () {
-        const item = $(this).attr("data-event-id");
-        console.log(`delete ${item}`);
-        //deleteItem(item); todo: implement it
-        _$eventTable.reload();
+        const itemId = $(this).attr("data-event-id");
+        const name = $(this).attr("data-name");
+        deleteItem(itemId, name);
     });
+
+    function deleteItem(itemId, name) {
+        abp.message.confirm(
+            abp.utils.formatString(
+                l('AreYouSureWantToDelete'),
+                name),
+            null,
+            (isConfirmed) => {
+                if (isConfirmed) {
+                    _eventService.delete({
+                        id: itemId
+                    }).done(() => {
+                        abp.notify.info(l('SuccessfullyDeleted'));
+                        _$eventTable.reload(false);
+                    });
+                }
+            }
+        );
+    }
 
     $(_$modal).on('hidden.bs.modal', function () {
         //$form.find('#clear').click();

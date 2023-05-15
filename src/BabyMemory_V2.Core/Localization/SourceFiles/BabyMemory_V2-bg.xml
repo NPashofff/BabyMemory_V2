@@ -149,6 +149,9 @@
 	  <text name="EventDate" value="Дата на Събитието" />
 	  <text name="JoinEvent" value="Присъедини се към събитие"/>
 	  <text name="ReadMore" value="Прочети повече"/>
+	  <text name="of" value="от"/>
+	  <text name="Table" value="Таблица"/>
+
 
 
   </texts>

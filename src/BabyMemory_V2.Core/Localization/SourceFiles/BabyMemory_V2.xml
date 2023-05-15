@@ -149,6 +149,8 @@
     <text name="EventDate" value="Event Date" />
     <text name="JoinEvent" value="Join Event"/>
     <text name="ReadMore" value="Read More"/>
+    <text name="of" value="of"/>
+    <text name="Table" value="Table"/>
 
   </texts>
 </localizationDictionary>
