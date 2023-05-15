@@ -16,7 +16,7 @@
             filter.maxResultCount = data.length;
             filter.skipCount = data.start;
             abp.ui.setBusy(_$table);
-
+            //todo: get all in future, order by event date
             _eventService.getAll(filter).done(function (result) {
                 callback({
                     recordsTotal: result.totalCount,
@@ -36,21 +36,21 @@
         ],
         responsive: {
             details: {
-                type: 'column',
+                type: 'column'
             }
         },
         columnDefs: [
             {
                 targets: 0,
                 className: 'control',
-                defaultContent: '',
+                defaultContent: ''
             },
             {
                 targets: 1,
                 data: null,
                 sortable: false,
                 render: (data, type, row, meta) => {
-                    return window.moment(row.eventDate).format('DD/MM/YYYY HH:mm');
+                    return window.moment(row.eventDate).format(`DD-MM-YYYY  HH:mm`);
                 }
             },
             {
@@ -68,7 +68,7 @@
                     //if (!abp.auth.isGranted("Edit")) {
                     //    return null;
                     //}
-                    const result = abp.session.userId == row.userId
+                    const result = abp.session.userId === row.userId
                         ? [
                             `   <button type="button" class="btn btn-sm bg-secondary ml-1 edit-event" title="${l("Edit")}" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
                         `       <i class="fas fa-pencil-alt"></i>`,
@@ -96,19 +96,19 @@
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();
         let eventId = _$form.find("#Id").val();
-        if (eventId == "") {
+        if (eventId === "") {
             eventId = 0;
             _$form.find("#Id").val(eventId);
         }
         const event = _$form.serializeFormToObject();
 
-        const usedFunction = eventId == 0 ? _eventService.create(event) : _eventService.update(event);
+        const usedFunction = eventId === 0 ? _eventService.create(event) : _eventService.update(event);
 
         abp.ui.setBusy(_$modal);
         usedFunction.done(function () {
             _$modal.modal('hide');
             abp.notify.info(l('SavedSuccessfully'));
-            _$eventTable.reload(eventId == 0);
+            _$eventTable.reload(eventId === 0);
         }).always(function () {
             abp.ui.clearBusy(_$modal);
         });
@@ -161,7 +161,7 @@
     });
 
     $('.txt-search').on('keypress', (e) => {
-        if (e.which == 13) {
+        if (e.which === 13) {
             _$eventTable.ajax.reload();
             return false;
         }

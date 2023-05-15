@@ -31,7 +31,7 @@
                 articleCard.style = "width: 18rem;";
                 articleCard.innerHTML = `
                     <div class="card elevation-3">
-                        <img class="card-img-top " src="${article.urlToImage}" border="true" alt="Card image cap" style="height: 200px; width: 100%;">
+                        <img class="card-img-top mt-2" src="${article.urlToImage}" border="true" alt="Card image cap" style="height: 200px; width: 100%; object-fit: contain">
                         <div class="card-body">
                             <h5 class="card-title"><b>${article.title}<b/></h5>
                             <p class="card-text"><i>${article.description ? article.description : ""} <span><a class="text-muted" href="${article.url}">${l("ReadMore")}: ${article.author}</a></span><i/></p>
