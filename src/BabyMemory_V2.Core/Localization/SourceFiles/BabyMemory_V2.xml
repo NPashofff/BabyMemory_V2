@@ -151,6 +151,7 @@
     <text name="ReadMore" value="Read More"/>
     <text name="of" value="of"/>
     <text name="Table" value="Table"/>
+    <text name="Participants" value="Participants"/>
 
   </texts>
 </localizationDictionary>

@@ -131,8 +131,8 @@
         function () {
             const eventId = $(this).attr("data-event-id");
             eventService.get({ id: eventId }).done((event) => {
-                console.log(event);
-                const eventMessage = [event.description, l("Participants:")];
+                const eventMessage = [event.description, l('Participants') + ":"];
+                //todo; add all participants
                 abp.message.info(eventMessage.join("\r\n"), event.name);
             });
         });
