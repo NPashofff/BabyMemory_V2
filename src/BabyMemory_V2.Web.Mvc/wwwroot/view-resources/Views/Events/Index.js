@@ -68,24 +68,25 @@
                     //if (!abp.auth.isGranted("Edit")) {
                     //    return null;
                     //}
-                    const result = abp.session.userId === row.userId
-                        ? [
-                            `   <button type="button" class="btn btn-sm bg-secondary ml-1 edit-event" title="${l("Edit")}" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
-                            `       <i class="fas fa-pencil-alt"></i>`,
-                            '   </button>',
-                            `   <button type="button" class="btn btn-sm bg-danger ml-1 deleter" title="${l("Delete")}" data-event-id="${row.id}" data-name="${row.name}">`,
-                            `       <i class="fas fa-trash"></i>`,
-                            '   </button>'
-                        ]
-                        : [`   <button type="button" class="btn btn-sm bg-secondary ml-1 join-event" title="${l("JoinEvent")}" data-event-id="${row.id}" data-name="${row.name}">`,
-                            `<i class="fa fa-plus-circle"></i>`,
-                            '   </button>'];
-
-                    result.unshift(
-                        `   <button type="button" class="btn btn-sm bg-secondary event-details ml-1" title="${l("Details")
+                    const result = [`<button type="button" class="btn btn-sm bg-secondary event-details ml-1" title="${l("Details")
                         }" data-event-id="${row.id}" data-name="${row.name}">`,
                         `<i class="fas fa-bars"></i>`,
-                        '   </button>');
+                        '   </button>'];
+
+                    if (row.isPublic)
+                        result.push(`<button type="button" class="btn btn-sm bg-secondary ml-1 join-event" title="${l("JoinEvent")}" data-event-id="${row.id}" data-name="${row.name}">`,
+                            `<i class="fa fa-plus-circle"></i>`,
+                            '   </button>');
+
+                    if (abp.session.userId === row.userId)
+                        result.push(`   <button type="button" class="btn btn-sm bg-secondary ml-1 edit-event" title="${l("Edit")
+                            }" data-event-id="${row.id}" data-toggle="modal" data-target="#EventModal">`,
+                            `       <i class="fas fa-pencil-alt"></i>`,
+                            '   </button>',
+                            `   <button type="button" class="btn btn-sm bg-danger ml-1 deleter" title="${l("Delete")
+                            }" data-event-id="${row.id}" data-name="${row.name}">`,
+                            `       <i class="fas fa-trash"></i>`,
+                            '   </button>');
 
                     return result.join('');
                 }
@@ -100,9 +101,14 @@
             eventId = 0;
             $form.find("#Id").val(eventId);
         }
+
         const event = $form.serializeFormToObject();
 
-        const usedFunction = eventId === 0 ? eventService.create(event) : eventService.update(event);
+        if ($("#IsPublic").is(':checked')) {
+            event.IsPublic = true;
+        }
+
+        const usedFunction = eventId == 0 ? eventService.create(event) : eventService.update(event);
 
         abp.ui.setBusy($modal);
         usedFunction.done(function () {
